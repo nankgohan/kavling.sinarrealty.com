@@ -192,8 +192,8 @@ function sendToWhatsApp() {
     const message = `*PEMESANAN KAVLING KWS BARU*\n\n` +
         `*No. Pemesanan:* ${orderNumber}\n` +
         `*Blok Kavling:* ${block}\n` +
-        `* 👤 Nama Pemesan:* ${nama}\n` +
-        `* 🏠 Alamat:* ${alamat}\n\n` +
+        `*👤Nama Pemesan:* ${nama}\n` +
+        `*🏠Alamat:* ${alamat}\n\n` +
         `_Pesan ini dikirim melalui website_`;
 
     // Encode message untuk URL
@@ -268,18 +268,18 @@ document.getElementById('whatsappSurveyForm').addEventListener('submit', functio
 
     // Buat pesan WhatsApp
     const lines = [
-        `*📋 FORM SURVEY KAVLING WISATA SUKAMAKMUR*%0A` +
-        `_================================_%0A%0A` +
-        `*👤 Nama Lengkap*%0A${nama}%0A%0A` +
-        `*🏠 Alamat*%0A${alamat}%0A%0A` +
-        `*📅 Rencana Survey*%0A${formattedDate}%0A%0A` +
-        `*⏰ Waktu Survey:* ${waktuSurvey || 'Belum dipilih'}` +
-        `*🚗 Kendaraan Survey*%0A${kendaraan}` +
-        `${nopol ? '%0ANo. Plat: ' + nopol : ''}%0A%0A` +
-        `*💰 Rencana Pembelian*%0A${rencanaBeli}%0A%0A` +
-        `_================================_%0A` +
-        `📌 Mohon konfirmasi ketersediaan jadwal survey%0A` +
-        `Terima kasih 🙏%0A%0A` +
+        `*📋 FORM SURVEY KAVLING WISATA SUKAMAKMUR*\n` +
+        `_================================_\n\n` +
+        `*👤 Nama Lengkap: *${nama}*\n` +
+        `*🏠 Alamat: *${alamat}*\n` +
+        `*📅 Rencana Survey:*${formattedDate}*\n` +
+        `*⏰ Waktu Survey: ${waktuSurvey || 'Belum dipilih'}\n` +
+        `*🚗 Kendaraan Survey: *${kendaraan}*\n` +
+        `${nopol ? 'No. Plat: ' + nopol : ''}*\n` +
+        `*💰 Rencana Pembelian: *${rencanaBeli}*\n` +
+        `_================================\n\n` +
+        `📌 Mohon konfirmasi ketersediaan jadwal survey` +
+        `Terima kasih 🙏\n\n` +
         `_Pesan ini dikirim otomatis melalui website_`
     ];
 
@@ -293,63 +293,3 @@ document.getElementById('whatsappSurveyForm').addEventListener('submit', functio
     this.reset();
 });
 // form ending
-
-// Pastikan kode ini dijalankan setelah DOM selesai dimuat
-document.addEventListener('DOMContentLoaded', function () {
-    // Cek apakah form benar-benar ada
-    const form = document.getElementById('whatsappSurveyForm');
-
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form values - pastikan ID ini sesuai dengan HTML Anda
-            const nama = document.getElementById('nama')?.value || '';
-            const alamat = document.getElementById('alamat')?.value || '';
-            const tanggal = document.getElementById('tanggal')?.value || '';
-            const kendaraan = document.getElementById('kendaraan')?.value || '';
-            const nopol = document.getElementById('nopol')?.value || '';
-            const rencanaBeli = document.getElementById('rencanaBeli')?.value || '';
-
-            // Validasi field wajib
-            if (!nama || !alamat) {
-                alert('Nama dan Alamat wajib diisi!');
-                return;
-            }
-
-            // Format date hanya jika tanggal diisi
-            const formattedDate = tanggal
-                ? new Date(tanggal).toLocaleDateString('id-ID', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                })
-                : 'Belum ditentukan';
-
-            // Create message
-            const message = `*📋 FORM SURVEY KAVLING WISATA SUKAMAKMUR*\n` +
-                `_================================_\n\n` +
-                `*👤 Nama Lengkap: *${nama}\n` +
-                `*🏠 Alamat: *${alamat}\n` +
-                `*📅 Rencana Survey:*${formattedDate}\n` +
-                `*⏰ Waktu Survey: *${waktuSurvey || 'Belum dipilih'}\n` +
-                `*🚗 Kendaraan Survey: *${kendaraan}\n` +
-                `${nopol ? 'No. Plat: ' + nopol : ''}\n` +
-                `*💰 Rencana Pembelian*%0A${rencanaBeli}\n` +
-                `_================================\n\n` +
-                `📌 Mohon konfirmasi ketersediaan jadwal survey` +
-                `Terima kasih 🙏\n\n` +
-                `_Pesan ini dikirim otomatis melalui website_`;
-
-            // Open WhatsApp
-            window.open(`https://wa.me/6285691472722?text=${message}`, '_blank');
-
-            // Reset form
-            this.reset();
-            alert('Terima kasih! Pesan survey Anda akan dikirim via WhatsApp.');
-        });
-    } else {
-        console.error('Form dengan ID whatsappSurveyForm tidak ditemukan!');
-    }
-});
