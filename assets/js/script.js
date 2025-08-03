@@ -270,13 +270,13 @@ document.getElementById('whatsappSurveyForm').addEventListener('submit', functio
     const lines = [
         `*📋 FORM SURVEY KAVLING WISATA SUKAMAKMUR*\n` +
         `_================================_\n\n` +
-        `*👤 Nama Lengkap: *${nama}*\n` +
-        `*🏠 Alamat: *${alamat}*\n` +
-        `*📅 Rencana Survey:*${formattedDate}*\n` +
-        `*⏰ Waktu Survey: ${waktuSurvey || 'Belum dipilih'}\n` +
-        `*🚗 Kendaraan Survey: *${kendaraan}*\n` +
+        `👤 Nama Lengkap: *${nama}*\n` +
+        `🏠 Alamat: *${alamat}*\n` +
+        `📅 Rencana Survey:*${formattedDate}*\n` +
+        `⏰ Waktu Survey: ${waktuSurvey || 'Belum dipilih'}\n` +
+        `🚗 Kendaraan Survey: *${kendaraan}*\n` +
         `${nopol ? 'No. Plat: ' + nopol : ''}*\n` +
-        `*💰 Rencana Pembelian: *${rencanaBeli}*\n` +
+        `💰 Rencana Pembelian: *${rencanaBeli}*\n` +
         `_================================\n\n` +
         `📌 Mohon konfirmasi ketersediaan jadwal survey` +
         `Terima kasih 🙏\n\n` +
