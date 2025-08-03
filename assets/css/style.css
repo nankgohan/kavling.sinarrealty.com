@@ -1586,7 +1586,7 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background-color: #2e7d32;
+          background-color: var(--succes-color);
           color: white;
           border: none;
           border-radius: 5px;
